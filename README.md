@@ -15,7 +15,6 @@
   <img src="https://img.shields.io/badge/Language-Kotlin_2.0-purple.svg?style=flat-square" alt="Kotlin" />
   <img src="https://img.shields.io/badge/Architecture-Clean_Architecture_%2B_MVI-orange.svg?style=flat-square" alt="Architecture" />
   <img src="https://img.shields.io/badge/Security-Android_Keystore_AES--256--GCM-red.svg?style=flat-square" alt="Security" />
-  <img src="https://img.shields.io/badge/License-MIT-lightgrey.svg?style=flat-square" alt="License" />
 </p>
 
 ---
@@ -42,7 +41,6 @@
 - [Tech Stack](#-tech-stack)
 - [Troubleshooting & FAQ](#-troubleshooting--faq)
 - [Technical Documentation](#-technical-documentation)
-- [License](#-license)
 
 ---
 
@@ -297,9 +295,3 @@ Comprehensive documentation and architecture guides are available in the [`docs/
 - 🌐 **[Interactive HTML Documentation](./docs/documentation.html)** — Visual guide and component overview.
 - 🛠️ **[Implementation Guide](./docs/implementation.md)** — Detailed module and engineering reference.
 - 💻 **[Local Hermes Agent Setup](./docs/local.md)** — Deep dive into local agent integration.
-
----
-
-## 📄 License
-
-This project is licensed under the **MIT License**. Feel free to use, modify, and distribute according to the license terms.
