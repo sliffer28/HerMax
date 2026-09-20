@@ -109,6 +109,12 @@ graph TD
 
 ## 🚀 Quick Start & Installation
 
+### 📥 Download Pre-built APK
+
+You can download the ready-to-install APK directly from GitHub Releases:
+- 📲 **[Download HerMax-v1.0.0-debug.apk](https://github.com/sliffer28/HerMax/releases/download/v1.0.0/HerMax-v1.0.0-debug.apk)** (~21.3 MB)
+- 🏷️ **[View All Releases](https://github.com/sliffer28/HerMax/releases)**
+
 ### Prerequisites
 
 - Android 8.0 (API Level 26) or higher.
