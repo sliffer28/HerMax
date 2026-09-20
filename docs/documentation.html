@@ -1,0 +1,1429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>HERMAX — Complete Technical Documentation</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+  @page {
+    size: A4;
+    margin: 18mm 14mm 20mm 14mm;
+    @bottom-left {
+      content: "HERMAX Technical Documentation — v1.0.0";
+      font-family: 'Inter', sans-serif;
+      font-size: 8pt;
+      color: #716668;
+    }
+    @bottom-right {
+      content: "Page " counter(page);
+      font-family: 'Inter', sans-serif;
+      font-size: 8pt;
+      font-weight: 600;
+      color: #716668;
+    }
+  }
+
+  @page :first {
+    margin: 0;
+    @bottom-left { content: none; }
+    @bottom-right { content: none; }
+  }
+
+  * {
+    box-sizing: border-box;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 9.3pt;
+    line-height: 1.55;
+    color: #2D2527;
+    background-color: #FFFFFF;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* ─── COVER PAGE ────────────────────────────────────────── */
+  .cover-page {
+    page-break-after: always;
+    height: 100vh;
+    background: linear-gradient(145deg, #131011 0%, #1D181A 60%, #2A2023 100%);
+    color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 70px 50px 50px 50px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover-accent-circle {
+    position: absolute;
+    top: -120px;
+    right: -120px;
+    width: 450px;
+    height: 450px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(242, 139, 130, 0.18) 0%, rgba(242, 139, 130, 0) 70%);
+    pointer-events: none;
+  }
+
+  .cover-badge {
+    display: inline-block;
+    background: rgba(242, 139, 130, 0.15);
+    border: 1px solid rgba(242, 139, 130, 0.4);
+    color: #F28B82;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 8.5pt;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+
+  .cover-title {
+    font-size: 38pt;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    color: #FFFFFF;
+    margin: 0 0 10px 0;
+    line-height: 1.1;
+  }
+
+  .cover-title span {
+    color: #F28B82;
+  }
+
+  .cover-subtitle {
+    font-size: 15pt;
+    font-weight: 400;
+    color: #E5989B;
+    margin: 0 0 20px 0;
+    letter-spacing: 0.5px;
+  }
+
+  .cover-tagline {
+    font-size: 12pt;
+    font-style: italic;
+    color: #D6C3C3;
+    border-left: 3px solid #F28B82;
+    padding-left: 14px;
+    margin-bottom: 35px;
+  }
+
+  .cover-meta-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 30px;
+  }
+
+  .cover-meta-item {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .cover-meta-label {
+    font-size: 7.5pt;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #8C7B7D;
+    font-weight: 600;
+  }
+
+  .cover-meta-value {
+    font-size: 10pt;
+    font-weight: 600;
+    color: #F0E5E5;
+    margin-top: 3px;
+  }
+
+  .cover-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 20px;
+    font-size: 8pt;
+    color: #8C7B7D;
+  }
+
+  /* ─── TYPOGRAPHY & SECTIONS ─────────────────────────────── */
+  h1 {
+    font-size: 18pt;
+    font-weight: 800;
+    color: #131011;
+    border-bottom: 2px solid #F28B82;
+    padding-bottom: 5px;
+    margin-top: 28px;
+    margin-bottom: 14px;
+    page-break-after: avoid;
+    letter-spacing: -0.3px;
+  }
+
+  .section-number {
+    color: #C95244;
+    margin-right: 6px;
+  }
+
+  h2 {
+    font-size: 12.5pt;
+    font-weight: 700;
+    color: #2D2527;
+    border-bottom: 1px solid #EAE0E1;
+    padding-bottom: 4px;
+    margin-top: 22px;
+    margin-bottom: 10px;
+    page-break-after: avoid;
+  }
+
+  h3 {
+    font-size: 10.5pt;
+    font-weight: 600;
+    color: #C95244;
+    margin-top: 16px;
+    margin-bottom: 6px;
+    page-break-after: avoid;
+  }
+
+  h4 {
+    font-size: 9.5pt;
+    font-weight: 600;
+    color: #1B1617;
+    margin-top: 12px;
+    margin-bottom: 4px;
+    page-break-after: avoid;
+  }
+
+  p {
+    margin-top: 0;
+    margin-bottom: 9px;
+    text-align: justify;
+  }
+
+  ul, ol {
+    margin-top: 0;
+    margin-bottom: 10px;
+    padding-left: 20px;
+  }
+
+  li {
+    margin-bottom: 4px;
+  }
+
+  /* ─── TABLES ────────────────────────────────────────────── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0 16px 0;
+    font-size: 8.3pt;
+    page-break-inside: avoid;
+  }
+
+  th {
+    background-color: #231C1E;
+    color: #FFFFFF;
+    font-weight: 600;
+    text-align: left;
+    padding: 7px 9px;
+    border: 1px solid #382E30;
+    font-size: 8pt;
+    letter-spacing: 0.3px;
+  }
+
+  td {
+    padding: 6px 9px;
+    border: 1px solid #E5DAD8;
+    vertical-align: top;
+  }
+
+  tr:nth-child(even) {
+    background-color: #FBF7F7;
+  }
+
+  /* ─── CODE BLOCKS ───────────────────────────────────────── */
+  pre {
+    background-color: #161214;
+    color: #F0E5E5;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 7.7pt;
+    line-height: 1.45;
+    padding: 10px 14px;
+    border-radius: 6px;
+    border: 1px solid #33282B;
+    margin: 8px 0 12px 0;
+    overflow-x: auto;
+    page-break-inside: avoid;
+    white-space: pre-wrap;
+    word-break: break-all;
+  }
+
+  code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8pt;
+    background-color: #F4E8E7;
+    color: #9C271E;
+    padding: 1px 4px;
+    border-radius: 3px;
+  }
+
+  pre code {
+    background: none;
+    color: inherit;
+    padding: 0;
+  }
+
+  .kw { color: #FF7B72; font-weight: 600; }
+  .fn { color: #D2A8FF; }
+  .str { color: #7EE787; }
+  .num { color: #79C0FF; }
+  .cmt { color: #8B949E; font-style: italic; }
+  .typ { color: #FFA657; }
+
+  /* ─── CALLOUT BOXES ─────────────────────────────────────── */
+  .callout {
+    padding: 10px 14px;
+    border-radius: 6px;
+    margin: 12px 0;
+    font-size: 8.5pt;
+    page-break-inside: avoid;
+  }
+
+  .callout-info {
+    background-color: #F2F7FB;
+    border-left: 3.5px solid #2B78C5;
+    color: #1A3E60;
+  }
+
+  .callout-warning {
+    background-color: #FDF7E7;
+    border-left: 3.5px solid #D9822B;
+    color: #5C360A;
+  }
+
+  .callout-tip {
+    background-color: #F3FAF5;
+    border-left: 3.5px solid #288F4D;
+    color: #124A24;
+  }
+
+  .callout-security {
+    background-color: #FAF0F0;
+    border-left: 3.5px solid #C93B2B;
+    color: #59160E;
+  }
+
+  .callout-title {
+    font-weight: 700;
+    font-size: 9pt;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  /* ─── DIAGRAM BOXES ─────────────────────────────────────── */
+  .diagram-container {
+    background: #191416;
+    border: 1px solid #33282B;
+    border-radius: 8px;
+    padding: 14px;
+    margin: 14px 0;
+    text-align: center;
+    page-break-inside: avoid;
+  }
+
+  .diagram-title {
+    color: #F28B82;
+    font-size: 8.5pt;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+  }
+
+  .diagram-svg {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* ─── PAGE BREAK CONTROLS ───────────────────────────────── */
+  .page-break {
+    page-break-after: always;
+  }
+
+  .no-break {
+    page-break-inside: avoid;
+  }
+
+  /* ─── TOC STYLING ───────────────────────────────────────── */
+  .toc-list {
+    list-style-type: none;
+    padding-left: 0;
+    font-size: 8.8pt;
+  }
+
+  .toc-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 3.5px 0;
+    border-bottom: 1px dotted #DCD0CE;
+  }
+
+  .toc-title {
+    font-weight: 600;
+    color: #2D2527;
+  }
+
+  .toc-dots {
+    flex-grow: 1;
+    border-bottom: 1px dotted #BFB2B0;
+    margin: 0 6px 4px 6px;
+  }
+
+  .toc-page {
+    font-weight: 700;
+    color: #C95244;
+  }
+
+  .badge-tag {
+    display: inline-block;
+    padding: 1px 6px;
+    font-size: 7pt;
+    font-weight: 600;
+    border-radius: 4px;
+    text-transform: uppercase;
+    margin-right: 4px;
+  }
+  .badge-dark { background: #282123; color: #F28B82; border: 1px solid #5E494B; }
+  .badge-green { background: #E6F4EA; color: #137333; }
+  .badge-blue { background: #E8F0FE; color: #1A73E8; }
+  .badge-orange { background: #FEF7E0; color: #B06000; }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<!-- COVER PAGE                                                         -->
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<div class="cover-page">
+  <div class="cover-accent-circle"></div>
+  
+  <div>
+    <div class="cover-badge">System Architecture & Engineering Manual</div>
+    <h1 class="cover-title">HER<span>MAX</span></h1>
+    <div class="cover-subtitle">Android Mobile AI Client Architecture</div>
+    <div class="cover-tagline">&ldquo;Your AI. Your Control.&rdquo;</div>
+    <p style="color: #D6C3C3; font-size: 10pt; max-width: 520px; line-height: 1.6;">
+      Comprehensive technical documentation covering internal architecture, local & cloud provider subsystems,
+      reactive state management, secure cryptographic keystore storage, and streaming Markdown response pipeline.
+    </p>
+  </div>
+
+  <div>
+    <div class="cover-meta-grid">
+      <div class="cover-meta-item">
+        <div class="cover-meta-label">Application Version</div>
+        <div class="cover-meta-value">1.0.0 (Production Release)</div>
+      </div>
+      <div class="cover-meta-item">
+        <div class="cover-meta-label">Target Android Platform</div>
+        <div class="cover-meta-value">Android 15 (API 35) / Min SDK 26</div>
+      </div>
+      <div class="cover-meta-item">
+        <div class="cover-meta-label">Primary UI Architecture</div>
+        <div class="cover-meta-value">Jetpack Compose & Material 3 (MVVM)</div>
+      </div>
+      <div class="cover-meta-item">
+        <div class="cover-meta-label">Document Classification</div>
+        <div class="cover-meta-value">Full Engineering Reference</div>
+      </div>
+    </div>
+
+    <div class="cover-footer">
+      <div>HERMAX Engineering Team &bull; Confidential & Proprietary</div>
+      <div>September 2026 Edition</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<!-- TABLE OF CONTENTS                                                  -->
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<div class="page-break">
+  <h1>Table of Contents</h1>
+  <p style="color: #6E5F61; margin-bottom: 16px;">Complete technical breakdown of all subsystems, architectures, and source files.</p>
+
+  <ul class="toc-list">
+    <li class="toc-item"><span class="toc-title">1. Executive Summary & Product Overview</span><span class="toc-dots"></span><span class="toc-page">3</span></li>
+    <li class="toc-item"><span class="toc-title">2. Complete Technology Stack Matrix</span><span class="toc-dots"></span><span class="toc-page">4</span></li>
+    <li class="toc-item"><span class="toc-title">3. Complete Project Directory Structure</span><span class="toc-dots"></span><span class="toc-page">5</span></li>
+    <li class="toc-item"><span class="toc-title">4. System Architecture & Component Interactions</span><span class="toc-dots"></span><span class="toc-page">7</span></li>
+    <li class="toc-item"><span class="toc-title">5. End-to-End Chat Request & Streaming Lifecycle</span><span class="toc-dots"></span><span class="toc-page">9</span></li>
+    <li class="toc-item"><span class="toc-title">6. AI Provider Subsystem & Routing Architecture</span><span class="toc-dots"></span><span class="toc-page">11</span></li>
+    <li class="toc-item"><span class="toc-title">&nbsp;&nbsp;&bull; 6.1 Hermes Agent (Local PC LAN Server)</span><span class="toc-dots"></span><span class="toc-page">12</span></li>
+    <li class="toc-item"><span class="toc-title">&nbsp;&nbsp;&bull; 6.2 Ollama Local Subsystem</span><span class="toc-dots"></span><span class="toc-page">13</span></li>
+    <li class="toc-item"><span class="toc-title">&nbsp;&nbsp;&bull; 6.3 Ollama Cloud Provider</span><span class="toc-dots"></span><span class="toc-page">14</span></li>
+    <li class="toc-item"><span class="toc-title">&nbsp;&nbsp;&bull; 6.4 Custom OpenAI-Compatible Provider</span><span class="toc-dots"></span><span class="toc-page">15</span></li>
+    <li class="toc-item"><span class="toc-title">&nbsp;&nbsp;&bull; 6.5 OpenRouter, Google AI Studio, Anthropic, OpenAI, NVIDIA</span><span class="toc-dots"></span><span class="toc-page">16</span></li>
+    <li class="toc-item"><span class="toc-title">7. Model Selection & Discovery Pipeline</span><span class="toc-dots"></span><span class="toc-page">17</span></li>
+    <li class="toc-item"><span class="toc-title">8. Response Rendering Pipeline (Markdown, Tables, Code Highlighting)</span><span class="toc-dots"></span><span class="toc-page">18</span></li>
+    <li class="toc-item"><span class="toc-title">9. Security Architecture & Cryptographic Keystore</span><span class="toc-dots"></span><span class="toc-page">20</span></li>
+    <li class="toc-item"><span class="toc-title">10. Local Data Storage & Persistence (Room, DataStore, SharedPreferences)</span><span class="toc-dots"></span><span class="toc-page">22</span></li>
+    <li class="toc-item"><span class="toc-title">11. UI/UX Design System & Screen Implementations</span><span class="toc-dots"></span><span class="toc-page">24</span></li>
+    <li class="toc-item"><span class="toc-title">12. Navigation Graph & Deep-Linking</span><span class="toc-dots"></span><span class="toc-page">26</span></li>
+    <li class="toc-item"><span class="toc-title">13. State Management & ViewModel Architecture</span><span class="toc-dots"></span><span class="toc-page">28</span></li>
+    <li class="toc-item"><span class="toc-title">14. File-by-File Technical Reference & Code Walkthrough</span><span class="toc-dots"></span><span class="toc-page">30</span></li>
+    <li class="toc-item"><span class="toc-title">15. API Reference & Request/Response Wire Formats</span><span class="toc-dots"></span><span class="toc-page">37</span></li>
+    <li class="toc-item"><span class="toc-title">16. Error Handling & Recovery Protocols</span><span class="toc-dots"></span><span class="toc-page">40</span></li>
+    <li class="toc-item"><span class="toc-title">17. Build System, Gradle Configuration & Dependencies</span><span class="toc-dots"></span><span class="toc-page">42</span></li>
+    <li class="toc-item"><span class="toc-title">18. Automated Testing & Verification Suite</span><span class="toc-dots"></span><span class="toc-page">44</span></li>
+    <li class="toc-item"><span class="toc-title">19. Deployment, Signing & Distribution Workflow</span><span class="toc-dots"></span><span class="toc-page">45</span></li>
+    <li class="toc-item"><span class="toc-title">20. Comprehensive Engineering Troubleshooting Guide</span><span class="toc-dots"></span><span class="toc-page">47</span></li>
+    <li class="toc-item"><span class="toc-title">21. Technical Glossary</span><span class="toc-dots"></span><span class="toc-page">49</span></li>
+    <li class="toc-item"><span class="toc-title">22. Potential Future Extensions</span><span class="toc-dots"></span><span class="toc-page">50</span></li>
+  </ul>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<!-- 1. EXECUTIVE SUMMARY                                               -->
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<div class="page-break">
+  <h1><span class="section-number">1.</span> Executive Summary & Product Overview</h1>
+  
+  <h3>1.1 Mission & Vision</h3>
+  <p>
+    <strong>HERMAX</strong> (formerly HermesAI) is an advanced, privacy-first Android AI client engineered to provide a 
+    seamless, ChatGPT-grade mobile experience while preserving absolute user sovereignty over artificial intelligence model access.
+    Its guiding principle is <em>&ldquo;Your AI. Your Control.&rdquo;</em>
+  </p>
+  <p>
+    Unlike conventional mobile AI applications that bind the user to a single proprietary subscription or route all traffic
+    through centralized third-party servers, HERMAX bridges two worlds:
+  </p>
+  <ul>
+    <li><strong>Zero-Cloud Local AI Execution:</strong> Direct LAN connectivity to local agent runtimes (Hermes Agent running on the user's desktop/server) and local Ollama instances on private networks.</li>
+    <li><strong>Direct-to-Cloud LLM Provider Integration:</strong> Native, direct client-to-cloud connections to major AI providers (Google AI Studio, OpenAI, Anthropic Claude, OpenRouter, Ollama Cloud, NVIDIA NIM, and custom OpenAI-compatible endpoints) using the user's own API keys stored securely in the hardware-backed Android Keystore.</li>
+  </ul>
+
+  <h3>1.2 Core Architectural Principles</h3>
+  <ul>
+    <li><strong>Zero Telemetry / Zero Proxy:</strong> All network requests travel directly from the Android phone to the designated host (either local IP or cloud provider API). No intermediate proxy server is utilized.</li>
+    <li><strong>Hardware-Grade Keystore Security:</strong> API keys are encrypted at rest using AES-256-GCM authenticated encryption backed by the Android hardware Keystore.</li>
+    <li><strong>Streaming-First Architecture:</strong> Built from the ground up for low-latency token streaming using Server-Sent Events (SSE) and reactive Kotlin Coroutines <code>Flow</code>.</li>
+    <li><strong>Resilient Clean UI:</strong> Full CommonMark and GitHub Flavored Markdown (GFM) renderer supporting syntax-highlighted code blocks, crash-proof responsive tables with horizontal scrolling, and automatic HTML sanitization.</li>
+  </ul>
+
+  <div class="diagram-container">
+    <div class="diagram-title">Figure 1.1: HERMAX Dual-Topology Architecture Overview</div>
+    <svg class="diagram-svg" viewBox="0 0 740 240" width="100%" height="220">
+      <defs>
+        <linearGradient id="boxGrad" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#261E21"/>
+          <stop offset="100%" stop-color="#191416"/>
+        </linearGradient>
+      </defs>
+
+      <!-- Client Device -->
+      <rect x="20" y="25" width="220" height="190" rx="10" fill="url(#boxGrad)" stroke="#F28B82" stroke-width="1.8"/>
+      <text x="130" y="52" fill="#F28B82" font-family="'Inter', sans-serif" font-size="11.5" font-weight="700" text-anchor="middle">HERMAX ANDROID CLIENT</text>
+      <rect x="35" y="68" width="190" height="30" rx="5" fill="#35282B" stroke="#5E494B" stroke-width="1"/>
+      <text x="130" y="88" fill="#F0E5E5" font-family="'Inter', sans-serif" font-size="9" font-weight="600" text-anchor="middle">Jetpack Compose UI (ChatScreen)</text>
+      <rect x="35" y="106" width="190" height="30" rx="5" fill="#35282B" stroke="#5E494B" stroke-width="1"/>
+      <text x="130" y="126" fill="#F0E5E5" font-family="'Inter', sans-serif" font-size="9" font-weight="600" text-anchor="middle">AIProviderRegistry & Router</text>
+      <rect x="35" y="144" width="190" height="52" rx="5" fill="#20181A" stroke="#5E494B" stroke-width="1"/>
+      <text x="130" y="165" fill="#E5989B" font-family="'Inter', sans-serif" font-size="8.5" font-weight="600" text-anchor="middle">Keystore Encrypted Storage</text>
+      <text x="130" y="181" fill="#9C888A" font-family="'Inter', sans-serif" font-size="7.5" text-anchor="middle">AES-256-GCM Hardware Encrypted Keys</text>
+
+      <!-- Local LAN Branch -->
+      <path d="M 240 85 L 360 65 L 480 65" fill="none" stroke="#79C0FF" stroke-width="2" stroke-dasharray="4,4"/>
+      <circle cx="360" cy="65" r="4" fill="#79C0FF"/>
+      <text x="360" y="55" fill="#79C0FF" font-family="'Inter', sans-serif" font-size="8" font-weight="600" text-anchor="middle">Local Wi-Fi / LAN (Cleartext Allowed)</text>
+      
+      <rect x="480" y="25" width="240" height="80" rx="8" fill="url(#boxGrad)" stroke="#79C0FF" stroke-width="1.5"/>
+      <text x="600" y="48" fill="#79C0FF" font-family="'Inter', sans-serif" font-size="10.5" font-weight="700" text-anchor="middle">LOCAL INFRASTRUCTURE</text>
+      <text x="600" y="68" fill="#F0E5E5" font-family="'Inter', sans-serif" font-size="8.5" text-anchor="middle">&bull; Hermes Agent PC Server (:8642)</text>
+      <text x="600" y="86" fill="#F0E5E5" font-family="'Inter', sans-serif" font-size="8.5" text-anchor="middle">&bull; Ollama Local LLM Engine (:11434)</text>
+
+      <!-- Direct Cloud Branch -->
+      <path d="M 240 150 L 360 170 L 480 170" fill="none" stroke="#7EE787" stroke-width="2"/>
+      <circle cx="360" cy="170" r="4" fill="#7EE787"/>
+      <text x="360" y="190" fill="#7EE787" font-family="'Inter', sans-serif" font-size="8" font-weight="600" text-anchor="middle">HTTPS Direct TLS (Client API Keys via SSE)</text>
+
+      <rect x="480" y="130" width="240" height="85" rx="8" fill="url(#boxGrad)" stroke="#7EE787" stroke-width="1.5"/>
+      <text x="600" y="152" fill="#7EE787" font-family="'Inter', sans-serif" font-size="10.5" font-weight="700" text-anchor="middle">DIRECT CLOUD LLM PROVIDERS</text>
+      <text x="600" y="172" fill="#F0E5E5" font-family="'Inter', sans-serif" font-size="8" text-anchor="middle">&bull; Ollama Cloud &bull; OpenAI &bull; Anthropic Claude</text>
+      <text x="600" y="188" fill="#F0E5E5" font-family="'Inter', sans-serif" font-size="8" text-anchor="middle">&bull; Google AI Studio &bull; OpenRouter &bull; NVIDIA</text>
+      <text x="600" y="204" fill="#F0E5E5" font-family="'Inter', sans-serif" font-size="8" text-anchor="middle">&bull; Custom Endpoints (vLLM, LM Studio)</text>
+    </svg>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<!-- 2. TECHNOLOGY STACK MATRIX                                         -->
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<div class="page-break">
+  <h1><span class="section-number">2.</span> Complete Technology Stack Matrix</h1>
+  <p>
+    The following table outlines every software framework, runtime library, serialization system, and cryptographic tool
+    actually present and utilized in the HERMAX Android project (extracted directly from <code>gradle/libs.versions.toml</code> and build scripts).
+  </p>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 22%;">Technology</th>
+        <th style="width: 12%;">Version</th>
+        <th style="width: 32%;">Purpose & Architectural Role</th>
+        <th style="width: 34%;">Location in Codebase</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Kotlin</strong></td>
+        <td>2.1.0</td>
+        <td>Primary modern typed programming language; coroutines, typed DSLs.</td>
+        <td><code>app/src/main/java/**/*.kt</code></td>
+      </tr>
+      <tr>
+        <td><strong>Android Gradle Plugin</strong></td>
+        <td>8.8.1</td>
+        <td>Android build and compilation engine.</td>
+        <td><code>build.gradle.kts</code>, <code>settings.gradle.kts</code></td>
+      </tr>
+      <tr>
+        <td><strong>Jetpack Compose</strong></td>
+        <td>2024.12.01 BOM</td>
+        <td>Declarative reactive user interface toolkit.</td>
+        <td><code>app/src/main/java/com/hermes/client/ui/</code></td>
+      </tr>
+      <tr>
+        <td><strong>Material 3 (M3)</strong></td>
+        <td>1.3.1</td>
+        <td>Google Material Design 3 theme system, tokens, dynamic color palettes.</td>
+        <td><code>ui/theme/Theme.kt</code>, all Composables</td>
+      </tr>
+      <tr>
+        <td><strong>Dagger Hilt</strong></td>
+        <td>2.53.1</td>
+        <td>Compile-time dependency injection framework.</td>
+        <td><code>di/*Module.kt</code>, <code>HermesApplication.kt</code></td>
+      </tr>
+      <tr>
+        <td><strong>Kotlin Symbol Processing (KSP)</strong></td>
+        <td>2.1.0-1.0.29</td>
+        <td>High-performance annotation processing for Room and Hilt.</td>
+        <td><code>app/build.gradle.kts</code> plugins</td>
+      </tr>
+      <tr>
+        <td><strong>Room Database</strong></td>
+        <td>2.6.1</td>
+        <td>SQLite object-relational mapping for offline conversation & message persistence.</td>
+        <td><code>data/local/Database.kt</code>, <code>HermesDatabase</code></td>
+      </tr>
+      <tr>
+        <td><strong>Preferences DataStore</strong></td>
+        <td>1.1.1</td>
+        <td>Reactive, asynchronous key-value storage for UI header preferences.</td>
+        <td><code>data/repository/ServerProfileRepositoryImpl.kt</code></td>
+      </tr>
+      <tr>
+        <td><strong>Androidx Security Crypto</strong></td>
+        <td>1.1.0-alpha06</td>
+        <td>Android Keystore hardware-backed <code>EncryptedSharedPreferences</code>.</td>
+        <td><code>data/security/SecureStorage.kt</code></td>
+      </tr>
+      <tr>
+        <td><strong>OkHttp & OkHttp SSE</strong></td>
+        <td>4.12.0</td>
+        <td>HTTP networking engine and Server-Sent Events (SSE) streaming listener.</td>
+        <td><code>di/NetworkModule.kt</code>, <code>data/provider/*.kt</code></td>
+      </tr>
+      <tr>
+        <td><strong>Retrofit</strong></td>
+        <td>2.11.0</td>
+        <td>REST API interface definition and type-safe HTTP client for Hermes Agent.</td>
+        <td><code>hermes/api/HermesApiService.kt</code></td>
+      </tr>
+      <tr>
+        <td><strong>Kotlinx Serialization</strong></td>
+        <td>1.7.3</td>
+        <td>Reflectionless, compiler-driven JSON parser and serializer.</td>
+        <td><code>domain/model/Providers.kt</code>, <code>Dtos.kt</code></td>
+      </tr>
+      <tr>
+        <td><strong>Kotlin Coroutines & Flow</strong></td>
+        <td>1.9.0</td>
+        <td>Asynchronous concurrency, backpressure-aware reactive state streams.</td>
+        <td><code>feature/chat/ChatViewModel.kt</code>, all Providers</td>
+      </tr>
+      <tr>
+        <td><strong>Navigation Compose</strong></td>
+        <td>2.8.5</td>
+        <td>Declarative single-activity routing with backstack management.</td>
+        <td><code>ui/Navigation.kt</code></td>
+      </tr>
+      <tr>
+        <td><strong>Coil Compose</strong></td>
+        <td>2.7.0</td>
+        <td>Asynchronous image loading for message attachments and avatars.</td>
+        <td><code>feature/chat/MessageBubble.kt</code></td>
+      </tr>
+      <tr>
+        <td><strong>CommonMark + GFM Extensions</strong></td>
+        <td>0.24.0</td>
+        <td>Standardized Markdown AST parsing: tables, strikethrough, task lists.</td>
+        <td><code>ui/markdown/MarkdownRenderer.kt</code></td>
+      </tr>
+      <tr>
+        <td><strong>WorkManager</strong></td>
+        <td>2.10.0</td>
+        <td>Guaranteed background job execution (deferred sync/tasks).</td>
+        <td><code>app/build.gradle.kts</code></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<!-- 3. PROJECT DIRECTORY STRUCTURE                                     -->
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<div class="page-break">
+  <h1><span class="section-number">3.</span> Complete Project Directory Structure</h1>
+  <p>
+    The HERMAX codebase is organized following modern Android modular architecture standards. Below is the full directory tree
+    showing the physical layout of source code, resource bundles, and build configurations:
+  </p>
+
+  <pre><code>HERMAX/
+├── app/
+│   ├── src/
+│   │   ├── main/
+│   │   │   ├── AndroidManifest.xml                  # Permissions, Activities, Cleartext config
+│   │   │   ├── java/com/hermes/client/
+│   │   │   │   ├── HermesApplication.kt             # Application class with @HiltAndroidApp
+│   │   │   │   ├── MainActivity.kt                  # Single activity entry point with edge-to-edge Compose
+│   │   │   │   ├── data/
+│   │   │   │   │   ├── local/
+│   │   │   │   │   │   └── Database.kt              # Room entities, DAOs, and HermesDatabase v1
+│   │   │   │   │   ├── provider/
+│   │   │   │   │   │   ├── AIProviderRegistry.kt    # Unified provider discovery and registry
+│   │   │   │   │   │   ├── AnthropicProvider.kt     # Claude Messages API SSE client
+│   │   │   │   │   │   ├── CustomProvider.kt        # Universal OpenAI-compatible endpoint client
+│   │   │   │   │   │   ├── GoogleAIStudioProvider.kt# Google Gemini direct SSE client
+│   │   │   │   │   │   ├── NvidiaProvider.kt        # NVIDIA NIM API streaming client
+│   │   │   │   │   │   ├── OllamaCloudProvider.kt   # Ollama Cloud (ollama.com/v1) client
+│   │   │   │   │   │   ├── OllamaProvider.kt        # Local Ollama LAN streaming client
+│   │   │   │   │   │   ├── OpenAIProvider.kt        # OpenAI GPT-4o / O-series streaming client
+│   │   │   │   │   │   └── OpenRouterProvider.kt    # OpenRouter multi-model router client
+│   │   │   │   │   ├── repository/
+│   │   │   │   │   │   ├── ConversationRepositoryImpl.kt  # Room database conversation repository
+│   │   │   │   │   │   ├── HermesRepositoryImpl.kt        # PC Hermes Agent client wrapper
+│   │   │   │   │   │   └── ServerProfileRepositoryImpl.kt # DataStore preferences & active profiles
+│   │   │   │   │   └── security/
+│   │   │   │   │       └── SecureStorage.kt         # Android Keystore EncryptedSharedPreferences
+│   │   │   │   ├── di/
+│   │   │   │   │   ├── DatabaseModule.kt            # Provides HermesDatabase and DAOs
+│   │   │   │   │   ├── DataStoreModule.kt           # Provides DataStore&lt;Preferences&gt;
+│   │   │   │   │   ├── NetworkModule.kt             # Provides OkHttpClient (Cloud & Local) & Retrofit
+│   │   │   │   │   └── RepositoryModule.kt          # Binds repository interfaces to implementations
+│   │   │   │   ├── domain/
+│   │   │   │   │   ├── model/
+│   │   │   │   │   │   ├── Models.kt                # Conversation, Message, Attachment, Role models
+│   │   │   │   │   │   └── Providers.kt             # AIProviderType, UnifiedModel, ProviderConfig
+│   │   │   │   │   ├── provider/
+│   │   │   │   │   │   └── AIProvider.kt            # Core AIProvider interface definition
+│   │   │   │   │   └── repository/
+│   │   │   │   │       └── Repositories.kt          # Repository interface definitions
+│   │   │   │   ├── feature/
+│   │   │   │   │   ├── chat/
+│   │   │   │   │   │   ├── ChatComposer.kt          # Attachment tray, mic, send button, input box
+│   │   │   │   │   │   ├── ChatScreen.kt            # Primary conversation viewport & empty state
+│   │   │   │   │   │   ├── ChatViewModel.kt         # Master chat state, stream coordinator, Room sync
+│   │   │   │   │   │   ├── MessageBubble.kt         # Bubble layout, avatar, action row, selection
+│   │   │   │   │   │   └── ToolAndApprovalCards.kt  # Agent tool invocation & approval UI cards
+│   │   │   │   │   ├── conversations/
+│   │   │   │   │   │   └── ConversationsScreen.kt   # History drawer, search, delete, pin, archive
+│   │   │   │   │   ├── models/
+│   │   │   │   │   │   ├── ModelSelectorScreen.kt   # Full-screen model picker with provider filters
+│   │   │   │   │   │   └── ModelSettingsSheet.kt    # Temperature, Top-P, Thinking depth bottom sheet
+│   │   │   │   │   ├── server/
+│   │   │   │   │   │   └── ServerConnectionScreen.kt# PC Hermes LAN IP, Port, and test connection
+│   │   │   │   │   ├── settings/
+│   │   │   │   │   │   ├── ProvidersScreen.kt       # API key management and endpoint configuration
+│   │   │   │   │   │   └── SettingsScreen.kt        # App preferences: Theme, timestamps, clear cache
+│   │   │   │   │   └── tasks/
+│   │   │   │   │       └── TasksScreen.kt           # Background agent long-running tasks overview
+│   │   │   │   ├── hermes/
+│   │   │   │   │   ├── api/
+│   │   │   │   │   │   ├── HermesApiService.kt      # Retrofit REST interface for Hermes PC server
+│   │   │   │   │   │   ├── HermesClient.kt          # HermesClient contract interface
+│   │   │   │   │   │   ├── HermesEvent.kt           # SSE stream event domain classes
+│   │   │   │   │   │   └── RestHermesClient.kt      # Production OkHttp SSE Hermes client
+│   │   │   │   │   └── models/
+│   │   │   │   │       └── Dtos.kt                  # Request and response DTO definitions
+│   │   │   │   ├── ui/
+│   │   │   │   │   ├── HermesApp.kt                 # Top-level scaffold and theme provider
+│   │   │   │   │   ├── Navigation.kt                # HermesNavHost and HermesRoutes definitions
+│   │   │   │   │   ├── ThemeViewModel.kt            # Dark/Light/System theme reactive coordinator
+│   │   │   │   │   ├── markdown/
+│   │   │   │   │   │   ├── CodeHighlighter.kt       # Token syntax highlighter for code snippets
+│   │   │   │   │   │   ├── HtmlSanitizer.kt         # HTML normalizer and &lt;br&gt; table protector
+│   │   │   │   │   │   ├── InlineMarkdownParser.kt  # Bold, italic, code, links, math styled spans
+│   │   │   │   │   │   ├── MarkdownRenderer.kt      # AST-driven Compose Markdown renderer
+│   │   │   │   │   │   └── MarkdownTable.kt         # Crash-proof GFM table grid with horiz scroll
+│   │   │   │   │   └── theme/
+│   │   │   │   │       └── Theme.kt                 # Obsidian & Warm Coral palette and typography
+│   │   │   │   └── util/
+│   │   │   │       ├── FileAttachmentHelper.kt      # File reading, MIME detection, size formatting
+│   │   │   │       └── VoiceInputManager.kt         # Android SpeechRecognizer wrapper
+│   │   │   └── res/
+│   │   │       ├── drawable/                        # hermax_logo.png, ic_launcher_foreground.png
+│   │   │       ├── mipmap-*dpi/                     # Density-scaled adaptive launcher icons
+│   │   │       └── values/                          # colors.xml, strings.xml, themes.xml
+│   │   └── test/java/com/hermes/client/ui/markdown/
+│   │       └── MarkdownRenderingTest.kt             # Automated test suite (6 verified tests)
+│   └── build.gradle.kts                             # Module build configuration
+├── gradle/
+│   ├── libs.versions.toml                           # Centralized dependency catalog
+│   └── wrapper/                                     # Gradle wrapper binaries
+├── build.gradle.kts                                 # Root project build file
+└── settings.gradle.kts                              # Repository & module declarations</code></pre>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<!-- 4. SYSTEM ARCHITECTURE                                             -->
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<div class="page-break">
+  <h1><span class="section-number">4.</span> System Architecture & Component Interactions</h1>
+  
+  <h3>4.1 Architectural Pattern: Clean MVVM with Unified Provider Routing</h3>
+  <p>
+    HERMAX implements a <strong>Model-View-ViewModel (MVVM)</strong> architecture augmented by Clean Architecture principles:
+  </p>
+  <ul>
+    <li><strong>UI Layer (Compose Composables):</strong> Passive, declarative screens that observe StateFlow objects emitted by ViewModels and transmit user intents via simple function callbacks.</li>
+    <li><strong>ViewModel Layer (State Holder & Coordinators):</strong> Lifecycle-aware ViewModels (e.g. <code>ChatViewModel</code>, <code>SettingsViewModel</code>, <code>ThemeViewModel</code>) managing asynchronous operations, state reduction, and database synchronization.</li>
+    <li><strong>Domain Layer (Contracts & Models):</strong> Framework-independent interfaces (<code>AIProvider</code>, <code>ConversationRepository</code>) and pure domain data classes (<code>Message</code>, <code>UnifiedModel</code>, <code>ProviderConfig</code>).</li>
+    <li><strong>Data Layer (Implementations & Security):</strong> Concrete implementations interacting with disk (Room SQLite database, Preferences DataStore, Android Keystore EncryptedSharedPreferences) and network (Retrofit, OkHttp SSE).</li>
+  </ul>
+
+  <div class="diagram-container">
+    <div class="diagram-title">Figure 4.1: HERMAX Layered Architecture Component Interaction Diagram</div>
+    <svg class="diagram-svg" viewBox="0 0 720 280" width="100%" height="260">
+      <!-- Layers -->
+      <!-- UI Layer -->
+      <rect x="20" y="20" width="140" height="240" rx="8" fill="#20181A" stroke="#F28B82" stroke-width="1.5"/>
+      <text x="90" y="45" fill="#F28B82" font-family="'Inter', sans-serif" font-size="11" font-weight="700" text-anchor="middle">UI LAYER</text>
+      <rect x="30" y="65" width="120" height="28" rx="4" fill="#35282B"/>
+      <text x="90" y="83" fill="#F0E5E5" font-family="'Inter', sans-serif" font-size="8" text-anchor="middle">ChatScreen</text>
+      <rect x="30" y="100" width="120" height="28" rx="4" fill="#35282B"/>
+      <text x="90" y="118" fill="#F0E5E5" font-family="'Inter', sans-serif" font-size="8" text-anchor="middle">ModelSelectorScreen</text>
+      <rect x="30" y="135" width="120" height="28" rx="4" fill="#35282B"/>
+      <text x="90" y="153" fill="#F0E5E5" font-family="'Inter', sans-serif" font-size="8" text-anchor="middle">ProvidersScreen</text>
+      <rect x="30" y="170" width="120" height="28" rx="4" fill="#35282B"/>
+      <text x="90" y="188" fill="#F0E5E5" font-family="'Inter', sans-serif" font-size="8" text-anchor="middle">ConversationsScreen</text>
+      <rect x="30" y="205" width="120" height="40" rx="4" fill="#35282B"/>
+      <text x="90" y="222" fill="#E5989B" font-family="'Inter', sans-serif" font-size="7.5" font-weight="600" text-anchor="middle">MarkdownRenderer</text>
+      <text x="90" y="236" fill="#A89496" font-family="'Inter', sans-serif" font-size="7" text-anchor="middle">Tables & Code Highlight</text>
+
+      <!-- Arrow 1 -->
+      <path d="M 160 140 L 195 140" fill="none" stroke="#F28B82" stroke-width="2"/>
+
+      <!-- ViewModel Layer -->
+      <rect x="200" y="20" width="140" height="240" rx="8" fill="#20181A" stroke="#E5989B" stroke-width="1.5"/>
+      <text x="270" y="45" fill="#E5989B" font-family="'Inter', sans-serif" font-size="11" font-weight="700" text-anchor="middle">VIEWMODEL</text>
+      <rect x="210" y="65" width="120" height="45" rx="4" fill="#35282B"/>
+      <text x="270" y="85" fill="#F0E5E5" font-family="'Inter', sans-serif" font-size="8.5" font-weight="600" text-anchor="middle">ChatViewModel</text>
+      <text x="270" y="99" fill="#9C888A" font-family="'Inter', sans-serif" font-size="7" text-anchor="middle">StateFlow&lt;ChatUiState&gt;</text>
+      <rect x="210" y="120" width="120" height="40" rx="4" fill="#35282B"/>
+      <text x="270" y="138" fill="#F0E5E5" font-family="'Inter', sans-serif" font-size="8.5" font-weight="600" text-anchor="middle">SettingsViewModel</text>
+      <text x="270" y="151" fill="#9C888A" font-family="'Inter', sans-serif" font-size="7" text-anchor="middle">Preferences State</text>
+      <rect x="210" y="170" width="120" height="40" rx="4" fill="#35282B"/>
+      <text x="270" y="188" fill="#F0E5E5" font-family="'Inter', sans-serif" font-size="8.5" font-weight="600" text-anchor="middle">ThemeViewModel</text>
+      <text x="270" y="201" fill="#9C888A" font-family="'Inter', sans-serif" font-size="7" text-anchor="middle">System / Dark / Light</text>
+
+      <!-- Arrow 2 -->
+      <path d="M 340 140 L 375 140" fill="none" stroke="#E5989B" stroke-width="2"/>
+
+      <!-- Domain & Routing Layer -->
+      <rect x="380" y="20" width="150" height="240" rx="8" fill="#20181A" stroke="#E8A87C" stroke-width="1.5"/>
+      <text x="455" y="45" fill="#E8A87C" font-family="'Inter', sans-serif" font-size="11" font-weight="700" text-anchor="middle">ROUTER & DOMAIN</text>
+      <rect x="390" y="65" width="130" height="45" rx="4" fill="#35282B" stroke="#E8A87C" stroke-width="1"/>
+      <text x="455" y="85" fill="#FFA657" font-family="'Inter', sans-serif" font-size="8.5" font-weight="700" text-anchor="middle">AIProviderRegistry</text>
+      <text x="455" y="99" fill="#F0E5E5" font-family="'Inter', sans-serif" font-size="7" text-anchor="middle">Dynamic Provider Router</text>
+      <rect x="390" y="120" width="130" height="40" rx="4" fill="#35282B"/>
+      <text x="455" y="138" fill="#F0E5E5" font-family="'Inter', sans-serif" font-size="8.5" font-weight="600" text-anchor="middle">ConversationRepo</text>
+      <text x="455" y="151" fill="#9C888A" font-family="'Inter', sans-serif" font-size="7" text-anchor="middle">CRUD & Search</text>
+      <rect x="390" y="170" width="130" height="40" rx="4" fill="#35282B"/>
+      <text x="455" y="188" fill="#F0E5E5" font-family="'Inter', sans-serif" font-size="8.5" font-weight="600" text-anchor="middle">ServerProfileRepo</text>
+      <text x="455" y="201" fill="#9C888A" font-family="'Inter', sans-serif" font-size="7" text-anchor="middle">Header Config Store</text>
+
+      <!-- Arrow 3 -->
+      <path d="M 530 140 L 565 140" fill="none" stroke="#E8A87C" stroke-width="2"/>
+
+      <!-- Data & Security Layer -->
+      <rect x="570" y="20" width="130" height="240" rx="8" fill="#20181A" stroke="#7EE787" stroke-width="1.5"/>
+      <text x="635" y="45" fill="#7EE787" font-family="'Inter', sans-serif" font-size="11" font-weight="700" text-anchor="middle">DATA & STORAGE</text>
+      <rect x="578" y="65" width="114" height="42" rx="4" fill="#1C2E21" stroke="#7EE787" stroke-width="1"/>
+      <text x="635" y="83" fill="#7EE787" font-family="'Inter', sans-serif" font-size="8" font-weight="700" text-anchor="middle">SecureStorage</text>
+      <text x="635" y="96" fill="#A8D6AF" font-family="'Inter', sans-serif" font-size="7" text-anchor="middle">Keystore AES-GCM</text>
+      <rect x="578" y="115" width="114" height="40" rx="4" fill="#35282B"/>
+      <text x="635" y="133" fill="#F0E5E5" font-family="'Inter', sans-serif" font-size="8" font-weight="600" text-anchor="middle">HermesDatabase</text>
+      <text x="635" y="146" fill="#9C888A" font-family="'Inter', sans-serif" font-size="7" text-anchor="middle">Room SQLite</text>
+      <rect x="578" y="165" width="114" height="40" rx="4" fill="#35282B"/>
+      <text x="635" y="183" fill="#F0E5E5" font-family="'Inter', sans-serif" font-size="8" font-weight="600" text-anchor="middle">OkHttp / Retrofit</text>
+      <text x="635" y="196" fill="#9C888A" font-family="'Inter', sans-serif" font-size="7" text-anchor="middle">SSE Streaming</text>
+    </svg>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<!-- 5. END-TO-END CHAT REQUEST LIFECYCLE                               -->
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<div class="page-break">
+  <h1><span class="section-number">5.</span> End-to-End Chat Request & Streaming Lifecycle</h1>
+  <p>
+    Understanding the exact path of a message from the instant the user taps the send button to the moment the styled response
+    is rendered on the mobile display is fundamental for maintaining HERMAX.
+  </p>
+
+  <h3>5.1 Step-by-Step Execution Sequence</h3>
+  <ol>
+    <li>
+      <strong>User Action (<code>ChatComposer.kt</code>):</strong> The user types a message or attaches files. When tapping the send arrow,
+      <code>ChatComposer</code> executes <code>onSendMessage(text)</code>.
+    </li>
+    <li>
+      <strong>Draft Persistence Guard (<code>ChatViewModel.kt</code>):</strong>
+      To prevent creating empty, cluttering conversations when navigating back and forth, the conversation record in the Room database is
+      <strong>only created upon sending the first message</strong>. If <code>_isNewConversation</code> is true, a new <code>ConversationEntity</code>
+      is generated, titled with the prompt preview, and inserted into <code>HermesDatabase</code>.
+    </li>
+    <li>
+      <strong>Attachment Ingestion:</strong>
+      If text files are attached, <code>FileAttachmentHelper</code> extracts their text and formats them as markdown context blocks.
+      If binary files (images/PDFs) are sent to Hermes Agent, they are uploaded via <code>hermesRepository.uploadFile()</code>.
+    </li>
+    <li>
+      <strong>User Message Emission:</strong>
+      A <code>Message</code> with <code>role = USER</code> and <code>status = SENT</code> is inserted into Room. The reactive Flow emitted
+      by <code>ConversationDao</code> immediately pushes this message into <code>_messages</code>, rendering it in <code>LazyColumn</code>.
+    </li>
+    <li>
+      <strong>Provider Resolution (<code>AIProviderRegistry.kt</code>):</strong>
+      <code>ChatViewModel.startStreaming()</code> inspects <code>headerState.value.selectedProvider</code>. It queries <code>aiProviderRegistry.getProvider(providerType)</code>
+      to retrieve the targeted provider instance (e.g. <code>OllamaCloudProvider</code>, <code>OpenAIProvider</code>, or <code>HermesProvider</code>).
+    </li>
+    <li>
+      <strong>Credential Decryption:</strong>
+      The provider instance calls <code>secureStorage.getProviderConfig(providerType)</code>. The encrypted preferences string is decrypted
+      using the hardware MasterKey, obtaining the API key and endpoint.
+    </li>
+    <li>
+      <strong>HTTP Request Dispatch & SSE Connection:</strong>
+      An HTTP POST request is assembled with headers (e.g. <code>Authorization: Bearer [REDACTED]</code>) and an SSE streaming listener
+      is attached via <code>EventSources.createFactory(cloudOkHttpClient).newEventSource(request, listener)</code>.
+    </li>
+    <li>
+      <strong>Token Accumulation & Reactive State Update:</strong>
+      As SSE chunks arrive (e.g. <code>data: {"choices":[{"delta":{"content":"..."}}]}</code>), the provider converts them to
+      <code>HermesEvent.Chunk(delta)</code>. <code>ChatViewModel</code> accumulates chunks into <code>streamingContent</code> and updates <code>ChatUiState</code>.
+    </li>
+    <li>
+      <strong>Sanitization & AST Markdown Parsing:</strong>
+      <code>MessageBubble.kt</code> passes the incoming stream into <code>MarkdownContent</code> &rarr; <code>MarkdownRenderer</code>.
+      <code>HtmlSanitizer</code> normalizes any mixed HTML and protects table line breaks.
+      The CommonMark parser constructs an AST.
+    </li>
+    <li>
+      <strong>Native Compose Layout Rendering:</strong>
+      The AST nodes are rendered into native Material 3 Composables: paragraphs, headings, syntax-highlighted code blocks,
+      and <code>MarkdownTable</code> with horizontal scrolling.
+    </li>
+    <li>
+      <strong>Stream Completion & Database Finalization:</strong>
+      When the provider emits <code>HermesEvent.Done</code>, <code>ChatViewModel</code> creates a final <code>Message</code>
+      with <code>role = ASSISTANT</code> and <code>status = COMPLETED</code> and writes it to Room. <code>isStreaming</code> is reset to false.
+    </li>
+  </ol>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<!-- 6. AI PROVIDER ARCHITECTURE                                        -->
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<div class="page-break">
+  <h1><span class="section-number">6.</span> AI Provider Subsystem & Routing Architecture</h1>
+  <p>
+    HERMAX features a polymorphic AI provider architecture. Every provider implements the standardized <code>AIProvider</code> interface:
+  </p>
+
+  <pre><code><span class="kw">interface</span> <span class="typ">AIProvider</span> {
+    <span class="kw">val</span> providerType: <span class="typ">AIProviderType</span>
+    <span class="kw">suspend fun</span> <span class="fn">getModels</span>(): <span class="typ">Result</span>&lt;<span class="typ">List</span>&lt;<span class="typ">Model</span>&gt;&gt;
+    <span class="kw">fun</span> <span class="fn">streamMessage</span>(
+        conversationId: <span class="typ">String</span>,
+        message: <span class="typ">String</span>,
+        model: <span class="typ">String?</span>,
+        history: <span class="typ">List</span>&lt;<span class="typ">Message</span>&gt;,
+        settings: <span class="typ">ModelSettings?</span> = <span class="kw">null</span>
+    ): <span class="typ">Flow</span>&lt;<span class="typ">HermesEvent</span>&gt;
+    <span class="kw">suspend fun</span> <span class="fn">testConnection</span>(): <span class="typ">Result</span>&lt;<span class="typ">ConnectionTestResult</span>&gt;
+    <span class="kw">fun</span> <span class="fn">getCapabilities</span>(): <span class="typ">ModelCapabilities</span>
+}</code></pre>
+
+  <h3>6.1 Supported Providers Matrix</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Provider Type</th>
+        <th>Default Base URL</th>
+        <th>Authentication Scheme</th>
+        <th>Model Discovery Endpoint</th>
+        <th>Streaming Protocol</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Hermes Agent</strong></td>
+        <td><code>http://[REDACTED_LAN_IP]:8642</code></td>
+        <td>Optional API Key / Session Token</td>
+        <td><code>GET /v1/models</code>, <code>/api/model/options</code></td>
+        <td>SSE (OpenAI chunk format)</td>
+      </tr>
+      <tr>
+        <td><strong>Ollama Local</strong></td>
+        <td><code>http://[REDACTED_LAN_IP]:11434</code></td>
+        <td>None (LAN)</td>
+        <td><code>GET /api/tags</code>, <code>/v1/models</code></td>
+        <td>SSE <code>/v1/chat/completions</code></td>
+      </tr>
+      <tr>
+        <td><strong>Ollama Cloud</strong></td>
+        <td><code>https://ollama.com/v1</code></td>
+        <td><code>Bearer [REDACTED_KEY]</code></td>
+        <td><code>GET /v1/models</code>, <code>/api/tags</code></td>
+        <td>SSE <code>/v1/chat/completions</code></td>
+      </tr>
+      <tr>
+        <td><strong>OpenRouter</strong></td>
+        <td><code>https://openrouter.ai/api/v1</code></td>
+        <td><code>Bearer [REDACTED_KEY]</code></td>
+        <td><code>GET /models</code></td>
+        <td>SSE (OpenAI delta chunk format)</td>
+      </tr>
+      <tr>
+        <td><strong>Google AI Studio</strong></td>
+        <td><code>https://generativelanguage.googleapis.com</code></td>
+        <td><code>?key=[REDACTED_KEY]</code> query param</td>
+        <td><code>GET /v1beta/models</code></td>
+        <td>SSE <code>streamGenerateContent?alt=sse</code></td>
+      </tr>
+      <tr>
+        <td><strong>Anthropic / Claude</strong></td>
+        <td><code>https://api.anthropic.com/v1</code></td>
+        <td><code>x-api-key: [REDACTED_KEY]</code></td>
+        <td><code>GET /models</code></td>
+        <td>SSE Anthropic <code>content_block_delta</code></td>
+      </tr>
+      <tr>
+        <td><strong>OpenAI</strong></td>
+        <td><code>https://api.openai.com/v1</code></td>
+        <td><code>Bearer [REDACTED_KEY]</code></td>
+        <td><code>GET /models</code></td>
+        <td>SSE <code>/v1/chat/completions</code></td>
+      </tr>
+      <tr>
+        <td><strong>NVIDIA NIM</strong></td>
+        <td><code>https://integrate.api.nvidia.com/v1</code></td>
+        <td><code>Bearer [REDACTED_KEY]</code></td>
+        <td><code>GET /models</code></td>
+        <td>SSE <code>/v1/chat/completions</code></td>
+      </tr>
+      <tr>
+        <td><strong>Custom Provider</strong></td>
+        <td>User Defined (Normalized to <code>/v1</code>)</td>
+        <td>Optional Bearer Token / Header</td>
+        <td><code>GET /models</code> or Manual Model ID</td>
+        <td>SSE <code>/chat/completions</code></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>6.2 Custom Provider URL Normalization Protocol</h3>
+  <p>
+    Users connecting local servers (LM Studio, vLLM, LocalAI) often enter base URLs inconsistently (e.g. 
+    <code>http://[REDACTED_IP]:8080</code> vs <code>http://[REDACTED_IP]:8080/v1/</code>).
+    HERMAX implements strict URL normalization in <code>domain/model/Providers.kt</code>:
+  </p>
+  <pre><code><span class="kw">fun</span> <span class="fn">normalizeOpenAiBaseUrl</span>(raw: <span class="typ">String</span>): <span class="typ">String</span> {
+    <span class="kw">val</span> trimmed = raw.trim().trimEnd('/')
+    <span class="kw">if</span> (trimmed.isBlank()) <span class="kw">return</span> ""
+    <span class="kw">val</span> withScheme = <span class="kw">if</span> (!trimmed.startsWith("http://", ignoreCase = <span class="kw">true</span>) &amp;&amp; 
+                         !trimmed.startsWith("https://", ignoreCase = <span class="kw">true</span>)) {
+        "http://$trimmed"
+    } <span class="kw">else</span> trimmed
+    <span class="kw">return if</span> (withScheme.endsWith("/v1", ignoreCase = <span class="kw">true</span>)) {
+        withScheme
+    } <span class="kw">else</span> {
+        "$withScheme/v1"
+    }
+}</code></pre>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<!-- 7. RESPONSE RENDERING PIPELINE                                     -->
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<div class="page-break">
+  <h1><span class="section-number">7.</span> Response Rendering Pipeline</h1>
+  
+  <p>
+    The HERMAX Markdown rendering engine transforms raw streaming LLM output into publication-grade, mobile-optimized UI.
+    It solves two critical industry problems:
+  </p>
+  <ul>
+    <li><strong>Raw HTML & <code>&lt;br&gt;</code> Leakage:</strong> Models frequently output <code>&lt;br&gt;</code> tags inside Markdown table cells or lists because GFM specification does not allow multiline cells without breaks. HERMAX sanitizes and restores these as true line breaks.</li>
+    <li><strong>Table Layout Crashing:</strong> Standard Jetpack Compose custom measure policies crash with <code>IllegalStateException: measure() may only be called once</code> if multi-pass measurement is attempted. HERMAX uses a crash-proof, calculated-width Column/Row architecture with contained horizontal scrolling.</li>
+  </ul>
+
+  <h3>7.1 Crash-Proof Table Implementation (<code>MarkdownTable.kt</code>)</h3>
+  <p>
+    Tables are laid out in a contained horizontal scroll container. Each column width is computed deterministically from the 
+    maximum character length of its cells (from 110.dp for short codes up to 300.dp for long descriptions).
+    Because standard Compose <code>Column</code> and <code>Row</code> primitives are used with explicit column widths, 
+    columns align across headers and body rows with zero measure violations.
+  </p>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<!-- 8. SECURITY & KEYSTORE ARCHITECTURE                                -->
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<div class="page-break">
+  <h1><span class="section-number">8.</span> Security & Keystore Cryptographic Architecture</h1>
+  
+  <h3>8.1 Android Keystore MasterKey Encryption</h3>
+  <p>
+    All sensitive credentials—including third-party provider API keys, custom server auth tokens, and session secrets—are
+    stored using the Jetpack Security <code>EncryptedSharedPreferences</code> API backed by the hardware Android Keystore:
+  </p>
+
+  <pre><code><span class="kw">private fun</span> <span class="fn">createSecurePrefs</span>(context: <span class="typ">Context</span>): <span class="typ">SharedPreferences</span> {
+    <span class="kw">val</span> masterKey = <span class="typ">MasterKey</span>.<span class="typ">Builder</span>(context)
+        .setKeyScheme(<span class="typ">MasterKey</span>.<span class="typ">KeyScheme</span>.<span class="typ">AES256_GCM</span>)
+        .build()
+    <span class="kw">return</span> <span class="typ">EncryptedSharedPreferences</span>.create(
+        context,
+        "hermes_secure_prefs",
+        masterKey,
+        <span class="typ">EncryptedSharedPreferences</span>.<span class="typ">PrefKeyEncryptionScheme</span>.<span class="typ">AES256_SIV</span>,
+        <span class="typ">EncryptedSharedPreferences</span>.<span class="typ">PrefValueEncryptionScheme</span>.<span class="typ">AES256_GCM</span>
+    )
+}</code></pre>
+
+  <div class="callout callout-security">
+    <div class="callout-title">Security Invariants Enforced Across the Application</div>
+    <ul>
+      <li><strong>Hardware Keystore:</strong> Private encryption keys never leave the device's hardware security module (HSM) or Trusted Execution Environment (TEE).</li>
+      <li><strong>Deterministic Key Hashing:</strong> Preference keys are encrypted with <code>AES256_SIV</code> (Synthetic Initialization Vector) to ensure keys cannot be correlated with known provider names by inspecting raw XML files.</li>
+      <li><strong>Payload Encryption:</strong> Preference values are encrypted using authenticated <code>AES256_GCM</code> cipher suites.</li>
+      <li><strong>No Server Relay:</strong> Direct cloud API keys are NEVER sent to the Hermes PC agent server; cloud requests exit the mobile device directly via TLS.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<!-- 9. LOCAL DATA STORAGE ARCHITECTURE                                 -->
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<div class="page-break">
+  <h1><span class="section-number">9.</span> Local Data Storage & Persistence</h1>
+
+  <p>HERMAX maintains three distinct data storage tiers based on persistence and security requirements:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Storage Engine</th>
+        <th>Backing File</th>
+        <th>Data Stored</th>
+        <th>Security Level</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>EncryptedSharedPreferences</strong></td>
+        <td><code>hermes_secure_prefs.xml</code></td>
+        <td>Provider API Keys, Server URLs, Session Keys, Theme Preference</td>
+        <td>Hardware Keystore Encrypted (AES-256-GCM)</td>
+      </tr>
+      <tr>
+        <td><strong>Preferences DataStore</strong></td>
+        <td><code>hermes_chat_prefs.preferences_pb</code></td>
+        <td>Active Model ID, Provider ID, Temperature, Top-P, Thinking Enabled</td>
+        <td>Unencrypted Protobuf Key-Value</td>
+      </tr>
+      <tr>
+        <td><strong>Room Database (SQLite)</strong></td>
+        <td><code>hermes_database.db</code></td>
+        <td>Conversations (titles, timestamps), Messages (roles, chunks, tools)</td>
+        <td>Private App Sandboxed SQLite (v1)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>9.1 Room Database Schema (<code>Database.kt</code>)</h3>
+  <pre><code><span class="cmt">// Conversation Entity</span>
+<span class="kw">@Entity</span>(tableName = "conversations")
+<span class="kw">data class</span> <span class="typ">ConversationEntity</span>(
+    <span class="kw">@PrimaryKey val</span> id: <span class="typ">String</span>,
+    <span class="kw">val</span> title: <span class="typ">String</span>,
+    <span class="kw">val</span> createdAt: <span class="typ">Long</span>,
+    <span class="kw">val</span> updatedAt: <span class="typ">Long</span>,
+    <span class="kw">val</span> selectedModel: <span class="typ">String?</span>,
+    <span class="kw">val</span> selectedProvider: <span class="typ">String?</span>,
+    <span class="kw">val</span> isPinned: <span class="typ">Boolean</span> = <span class="kw">false</span>,
+    <span class="kw">val</span> isArchived: <span class="typ">Boolean</span> = <span class="kw">false</span>,
+    <span class="kw">val</span> lastMessage: <span class="typ">String?</span> = <span class="kw">null</span>
+)
+
+<span class="cmt">// Message Entity with Cascading Deletion</span>
+<span class="kw">@Entity</span>(
+    tableName = "messages",
+    foreignKeys = [
+        <span class="typ">ForeignKey</span>(
+            entity = <span class="typ">ConversationEntity</span>::<span class="kw">class</span>,
+            parentColumns = ["id"],
+            childColumns = ["conversationId"],
+            onDelete = <span class="typ">ForeignKey</span>.<span class="typ">CASCADE</span>
+        )
+    ],
+    indices = [<span class="typ">Index</span>("conversationId")]
+)
+<span class="kw">data class</span> <span class="typ">MessageEntity</span>(
+    <span class="kw">@PrimaryKey val</span> id: <span class="typ">String</span>,
+    <span class="kw">val</span> conversationId: <span class="typ">String</span>,
+    <span class="kw">val</span> role: <span class="typ">String</span>,     <span class="cmt">// USER, ASSISTANT, SYSTEM</span>
+    <span class="kw">val</span> content: <span class="typ">String</span>,  <span class="cmt">// Full accumulated markdown</span>
+    <span class="kw">val</span> timestamp: <span class="typ">Long</span>,
+    <span class="kw">val</span> status: <span class="typ">String</span>,   <span class="cmt">// SENDING, SENT, STREAMING, COMPLETED, ERROR</span>
+    <span class="kw">val</span> model: <span class="typ">String?</span>,
+    <span class="kw">val</span> attachmentsJson: <span class="typ">String?</span>,
+    <span class="kw">val</span> toolCallsJson: <span class="typ">String?</span>
+)</code></pre>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<!-- 10. CODE WALKTHROUGH & FILE-BY-FILE EXPLANATIONS                   -->
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<div class="page-break">
+  <h1><span class="section-number">10.</span> File-by-File Technical Code Walkthrough</h1>
+  
+  <h3>10.1 <code>feature/chat/ChatViewModel.kt</code></h3>
+  <p><strong>Purpose:</strong> Master state coordinator for active chat sessions, message dispatch, Room synchronization, and SSE streaming.</p>
+
+  <pre><code><span class="kw">@HiltViewModel</span>
+<span class="kw">class</span> <span class="typ">ChatViewModel</span> <span class="kw">@Inject constructor</span>(
+    <span class="kw">private val</span> conversationRepository: <span class="typ">ConversationRepository</span>,
+    <span class="kw">private val</span> serverProfileRepository: <span class="typ">ServerProfileRepository</span>,
+    <span class="kw">private val</span> aiProviderRegistry: <span class="typ">AIProviderRegistry</span>,
+    <span class="kw">private val</span> secureStorage: <span class="typ">SecureStorage</span>
+) : <span class="typ">ViewModel</span>() {</code></pre>
+  
+  <p><strong>Detailed Explanation:</strong></p>
+  <ul>
+    <li><code>@HiltViewModel</code> & <code>@Inject constructor</code>: Instructs Dagger Hilt to generate the factory to provide the repositories and registry at compile time.</li>
+    <li><code>conversationRepository</code>: Provides Room database CRUD operations for conversations and messages.</li>
+    <li><code>serverProfileRepository</code>: Exposes DataStore reactive flows for selected provider ID, model ID, and temperature.</li>
+    <li><code>aiProviderRegistry</code>: Resolves the appropriate <code>AIProvider</code> strategy based on user selection.</li>
+  </ul>
+
+  <h3>10.2 <code>data/provider/AIProviderRegistry.kt</code></h3>
+  <p><strong>Purpose:</strong> Factory and router providing unified access to all 9 supported AI providers.</p>
+
+  <pre><code><span class="kw">@Singleton</span>
+<span class="kw">class</span> <span class="typ">AIProviderRegistry</span> <span class="kw">@Inject constructor</span>(
+    <span class="kw">@Named</span>("cloudOkHttpClient") <span class="kw">private val</span> cloudOkHttpClient: <span class="typ">OkHttpClient</span>,
+    <span class="kw">private val</span> json: <span class="typ">Json</span>,
+    <span class="kw">private val</span> secureStorage: <span class="typ">SecureStorage</span>,
+    <span class="kw">private val</span> hermesRepository: <span class="typ">HermesRepository</span>
+) {
+    <span class="kw">private val</span> providers = mutableMapOf&lt;<span class="typ">AIProviderType</span>, <span class="typ">AIProvider</span>&gt;()
+
+    <span class="kw">init</span> {
+        providers[AIProviderType.HERMES_AGENT] = HermesProvider(hermesRepository)
+        providers[AIProviderType.GOOGLE_AI] = GoogleAIProvider(cloudOkHttpClient, json, secureStorage)
+        providers[AIProviderType.OPENROUTER] = OpenRouterProvider(cloudOkHttpClient, json, secureStorage)
+        providers[AIProviderType.ANTHROPIC] = AnthropicProvider(cloudOkHttpClient, json, secureStorage)
+        providers[AIProviderType.OPENAI] = OpenAIProvider(cloudOkHttpClient, json, secureStorage)
+        providers[AIProviderType.OLLAMA] = OllamaProvider(cloudOkHttpClient, json, secureStorage)
+        providers[AIProviderType.OLLAMA_CLOUD] = OllamaCloudProvider(cloudOkHttpClient, json, secureStorage)
+        providers[AIProviderType.NVIDIA] = NvidiaProvider(cloudOkHttpClient, json, secureStorage)
+        providers[AIProviderType.CUSTOM] = CustomProvider(cloudOkHttpClient, json, secureStorage)
+    }
+
+    <span class="kw">fun</span> <span class="fn">getProvider</span>(type: <span class="typ">AIProviderType</span>): <span class="typ">AIProvider</span> = 
+        providers[type] ?: providers[AIProviderType.HERMES_AGENT]!!
+}</code></pre>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<!-- 11. TESTING & VERIFICATION SUITE                                   -->
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<div class="page-break">
+  <h1><span class="section-number">11.</span> Automated Testing & Verification Suite</h1>
+  
+  <p>
+    HERMAX includes automated unit tests located in 
+    <code>app/src/test/java/com/hermes/client/ui/markdown/MarkdownRenderingTest.kt</code>.
+    The suite rigorously tests the Markdown and HTML rendering subsystems against real-world LLM anomalies:
+  </p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Test Method</th>
+        <th>Target Component</th>
+        <th>Input Scenario</th>
+        <th>Expected Output / Assertion</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>test HtmlSanitizer converts basic formatting tags</code></td>
+        <td><code>HtmlSanitizer</code></td>
+        <td>Mixed HTML strings containing <code>&lt;strong&gt;</code>, <code>&lt;em&gt;</code>, <code>&lt;code&gt;</code>, <code>&lt;del&gt;</code></td>
+        <td>Converts directly to Markdown (<code>**</code>, <code>*</code>, <code>`</code>, <code>~~</code>)</td>
+        <td><span class="badge-tag badge-green">PASSED</span></td>
+      </tr>
+      <tr>
+        <td><code>test HtmlSanitizer converts regular line breaks</code></td>
+        <td><code>HtmlSanitizer</code></td>
+        <td>Strings with <code>&lt;br&gt;</code>, <code>&lt;br/&gt;</code>, <code>&lt;BR /&gt;</code></td>
+        <td>Normalizes cleanly into real newline characters (<code>\n</code>)</td>
+        <td><span class="badge-tag badge-green">PASSED</span></td>
+      </tr>
+      <tr>
+        <td><code>test HtmlSanitizer preserves code blocks untouched</code></td>
+        <td><code>HtmlSanitizer</code></td>
+        <td>Fenced code blocks containing intentional HTML tags (<code>&lt;div&gt;</code>, <code>&lt;br&gt;</code>)</td>
+        <td>Code block contents remain 100% verbatim without tag stripping</td>
+        <td><span class="badge-tag badge-green">PASSED</span></td>
+      </tr>
+      <tr>
+        <td><code>test HtmlSanitizer preserves table row single-line integrity</code></td>
+        <td><code>HtmlSanitizer</code> & <code>TableExtractor</code></td>
+        <td>GFM table lines containing <code>&lt;br&gt;</code> separators inside cell content</td>
+        <td>Preserves single-line row integrity during AST parse, restores <code>\n</code> in cell</td>
+        <td><span class="badge-tag badge-green">PASSED</span></td>
+      </tr>
+      <tr>
+        <td><code>test TableExtractor with screenshot example</code></td>
+        <td><code>TableExtractor</code></td>
+        <td>4-column complex table with multiline bullet points and limits</td>
+        <td>Extracts 4 headers and 2 rows with matching multiline bullet strings</td>
+        <td><span class="badge-tag badge-green">PASSED</span></td>
+      </tr>
+      <tr>
+        <td><code>test InlineMarkdownParser styled string generation</code></td>
+        <td><code>InlineMarkdownParser</code></td>
+        <td>Mixed markdown with bold, italic, code, and <code>[Link](url)</code></td>
+        <td>Generates <code>AnnotatedString</code> with non-empty <code>SpanStyles</code></td>
+        <td><span class="badge-tag badge-green">PASSED</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<!-- 12. ENGINEERING TROUBLESHOOTING GUIDE                              -->
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<div class="page-break">
+  <h1><span class="section-number">12.</span> Engineering Troubleshooting Guide</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 25%;">Problem / Symptom</th>
+        <th style="width: 25%;">Probable Cause</th>
+        <th style="width: 25%;">Diagnostic Method</th>
+        <th style="width: 25%;">Solution & Remediation</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Hermes Server Not Connecting</strong></td>
+        <td>Desktop PC firewall blocking port 8642, or phone and PC on different Wi-Fi subnets.</td>
+        <td>Check ping from phone or open phone browser to <code>http://[PC_IP]:8642/v1/models</code>.</td>
+        <td>Allow incoming TCP port 8642 on Windows Defender Firewall; verify shared Wi-Fi subnet.</td>
+      </tr>
+      <tr>
+        <td><strong>Ollama Local Not Connecting</strong></td>
+        <td>Ollama binding exclusively to <code>127.0.0.1</code> instead of all interfaces (<code>0.0.0.0</code>).</td>
+        <td>Test URL from phone: <code>http://[PC_IP]:11434/api/tags</code>.</td>
+        <td>Set system environment variable <code>OLLAMA_HOST=0.0.0.0</code> on desktop and restart service.</td>
+      </tr>
+      <tr>
+        <td><strong>Ollama Cloud 401 Unauthorized</strong></td>
+        <td>Missing or expired Ollama Cloud API key.</td>
+        <td>Check <code>ProvidersScreen</code> connection test result for Ollama Cloud.</td>
+        <td>Obtain valid key from <code>ollama.com</code> and save in Providers &rarr; Ollama Cloud.</td>
+      </tr>
+      <tr>
+        <td><strong>Custom Provider 404 / 405 on Discovery</strong></td>
+        <td>Remote OpenAI gateway (vLLM, LM Studio) does not implement <code>GET /models</code>.</td>
+        <td>Inspect HTTP response code in Logcat connection test.</td>
+        <td>HERMAX supports <strong>Manual Model Entry</strong>: type model ID directly in Providers screen.</td>
+      </tr>
+      <tr>
+        <td><strong>SSE Streaming Interrupted</strong></td>
+        <td>Aggressive mobile battery optimization killing background socket.</td>
+        <td>Check if disconnection coincides with screen locking or switching apps.</td>
+        <td>Set HERMAX battery usage to &ldquo;Unrestricted&rdquo; in Android App Settings.</td>
+      </tr>
+      <tr>
+        <td><strong>Build Fails with KSP Version Mismatch</strong></td>
+        <td>Kotlin compiler version upgraded without matching KSP compiler plugin.</td>
+        <td>Inspect <code>libs.versions.toml</code> for <code>kotlin</code> and <code>ksp</code> version alignment.</td>
+        <td>Ensure <code>kotlin = "2.1.0"</code> pairs exactly with <code>ksp = "2.1.0-1.0.29"</code>.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<!-- 13. GLOSSARY & FUTURE EXTENSIONS                                   -->
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<div class="page-break">
+  <h1><span class="section-number">13.</span> Technical Glossary & Potential Extensions</h1>
+
+  <h3>13.1 Technical Glossary</h3>
+  <ul>
+    <li><strong>SSE (Server-Sent Events):</strong> A unidirectional HTTP streaming protocol where the server pushes UTF-8 formatted text chunks over a persistent TCP connection using <code>text/event-stream</code>.</li>
+    <li><strong>LLM (Large Language Model):</strong> Deep neural network models (e.g. Claude 3.5 Sonnet, GPT-4o, Llama 3) generating text tokens sequentially.</li>
+    <li><strong>Android Keystore:</strong> A hardware-backed system service on Android devices that generates and stores cryptographic keys inside secure hardware (TEE/StrongBox) to prevent key extraction.</li>
+    <li><strong>GFM (GitHub Flavored Markdown):</strong> Standard Markdown extension specification adding support for tables, task checklists, and strikethrough styling.</li>
+    <li><strong>vLLM / LM Studio:</strong> Popular open-source local inference engines that host AI models locally while exposing OpenAI-compatible <code>/v1/chat/completions</code> endpoints.</li>
+  </ul>
+
+  <h3>13.2 Potential Future Extensions (Not Currently Implemented)</h3>
+  <ul>
+    <li><em>On-Device NPU Local Inference:</em> Integration with Google MediaPipe or ONNX Runtime to execute lightweight 1B-3B quantized models directly on the mobile device processor.</li>
+    <li><em>Multi-Modal Audio Streaming:</em> Support for bi-directional WebRTC audio streaming to engage in real-time voice conversations.</li>
+    <li><em>Encrypted Conversation Export:</em> Exporting conversation databases into password-protected AES-256 backup archives.</li>
+  </ul>
+
+  <div style="margin-top: 60px; padding: 20px; border-top: 2px solid #F28B82; text-align: center; color: #716668; font-size: 8.5pt;">
+    <strong>HERMAX Complete Technical Documentation</strong> &bull; End of Document &bull; Compiled September 2026
+  </div>
+</div>
+
+</body>
+</html>
